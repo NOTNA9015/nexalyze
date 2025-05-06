@@ -3,45 +3,520 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexalyze</title>
+    <title>Nexalyze - Minecraft Server</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f9ff;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+        }
+        
+        .logo-text {
+            background: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 50%, #0284c7 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .server-ip-box {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.2);
+        }
+        
+        .minecraft-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .minecraft-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255,255,255,0.3) 0%,
+                rgba(255,255,255,0) 60%
+            );
+            transform: rotate(30deg);
+            transition: all 0.3s ease;
+        }
+        
+        .minecraft-btn:hover::before {
+            left: 100%;
+        }
+        
+        .gamemode-card {
+            transition: all 0.3s ease;
+        }
+        
+        .gamemode-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .join-step {
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .join-step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: #0284c7;
+            color: white;
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #000000; /* Black background */
-        }
-        h1 {
-            color: #000000; /* Black text color */
-        }
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .download-button {
-            padding: 10px 20px;
-            font-size: 18px;
-            color: #000000; /* Black text color on button */
-            background-color: #FFFFFF; /* White button background */
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            text-align: center;
-            width: 200px;
-            transition: background-color 0.3s;
-        }
-        .download-button:hover {
-            background-color: #cccccc; /* Light gray background on hover */
+            font-weight: bold;
         }
     </style>
 </head>
-<body>
-    <h1></h1>
-    <div class="button-container">
-        <!-- Download Button 1 -->
-        <a href="https://discord.gg/68xY58WdtU" class="download-button" download>Join nexalyze</a>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="gradient-bg shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-cube text-white text-2xl"></i>
+                <span class="text-2xl font-bold logo-text">Nexalyze</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-white hover:text-blue-100 font-medium transition">Home</a>
+                <a href="#features" class="text-white hover:text-blue-100 font-medium transition">Features</a>
+                <a href="#gamemodes" class="text-white hover:text-blue-100 font-medium transition">Gamemodes</a>
+                <a href="#join" class="text-white hover:text-blue-100 font-medium transition">How to Join</a>
+            </div>
+            <button class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg py-20">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                    Welcome to <span class="logo-text">Nexalyze</span>
+                </h1>
+                <p class="text-xl text-blue-50 mb-8">
+                    The ultimate Minecraft experience with Java & Bedrock crossplay, 
+                    custom gamemodes, and an amazing community.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#join" class="minecraft-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                        <i class="fas fa-play mr-2"></i> Join Now
+                    </a>
+                    <a href="https://discord.gg/68xY58WdtU" class="minecraft-btn bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                        <i class="fas fa-users mr-2"></i> Discord
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="server-ip-box p-6 rounded-xl shadow-xl max-w-md w-full text-center">
+                    <h3 class="text-white text-xl font-semibold mb-4">Connect to our server</h3>
+                    <div class="bg-white rounded-lg p-4 flex justify-between items-center">
+                        <code class="text-blue-600 font-mono text-lg">mc.nexalyze.dk</code>
+                        <button onclick="copyToClipboard()" class="bg-blue-100 hover:bg-blue-200 text-blue-600 p-2 rounded-lg transition">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <p class="text-blue-100 mt-2 text-sm">Java & Bedrock Crossplay Supported</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">Server Features</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-blue-50 rounded-xl p-6 shadow-md transition duration-300 hover:shadow-xl">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">High Performance</h3>
+                    <p class="text-blue-600">
+                        Running on premium hardware with optimized performance for lag-free gameplay even at peak times.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-blue-50 rounded-xl p-6 shadow-md transition duration-300 hover:shadow-xl">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">Friendly Community</h3>
+                    <p class="text-blue-600">
+                        Join our welcoming community of players who love Minecraft as much as you do.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-blue-50 rounded-xl p-6 shadow-md transition duration-300 hover:shadow-xl">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">Crossplay Support</h3>
+                    <p class="text-blue-600">
+                        Play together with friends regardless of platform - Java and Bedrock players can play together seamlessly.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Join Section -->
+    <section id="join" class="py-20 bg-blue-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">How to Join</h2>
+                <p class="text-blue-600 max-w-2xl mx-auto">Our server supports both Java and Bedrock editions with crossplay. Follow these simple steps to join the fun!</p>
+                <div class="w-20 h-1 bg-blue-500 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Java Edition -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-16 bg-blue-600 flex items-center justify-center">
+                        <h3 class="text-xl font-bold text-white flex items-center">
+                            <i class="fab fa-java mr-2"></i> Java Edition
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-6">
+                            <div class="join-step">
+                                <div class="join-step-number">1</div>
+                                <h4 class="text-lg font-semibold text-blue-800">Open Minecraft</h4>
+                                <p class="text-blue-600 mt-1">Launch Minecraft Java Edition (version 1.21.4 or newer required)</p>
+                            </div>
+                            
+                            <div class="join-step">
+                                <div class="join-step-number">2</div>
+                                <h4 class="text-lg font-semibold text-blue-800">Go to Multiplayer</h4>
+                                <p class="text-blue-600 mt-1">Click "Multiplayer" from the main menu</p>
+                            </div>
+                            
+                            <div class="join-step">
+                                <div class="join-step-number">3</div>
+                                <h4 class="text-lg font-semibold text-blue-800">Add Server</h4>
+                                <p class="text-blue-600 mt-1">Click "Add Server" and enter these details:</p>
+                                <div class="mt-2 bg-blue-50 p-4 rounded-lg">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="font-medium text-blue-800">Server Name:</span>
+                                        <span class="font-mono text-blue-600">Nexalyze</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-medium text-blue-800">Server Address:</span>
+                                        <span class="font-mono text-blue-600">mc.nexalyze.dk</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="join-step">
+                                <div class="join-step-number">4</div>
+                                <h4 class="text-lg font-semibold text-blue-800">Join Server</h4>
+                                <p class="text-blue-600 mt-1">Select the server from your list and click "Join Server"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bedrock Edition -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-16 bg-green-600 flex items-center justify-center">
+                        <h3 class="text-xl font-bold text-white flex items-center">
+                            <i class="fas fa-mobile-alt mr-2"></i> Bedrock Edition
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-6">
+                            <div class="join-step">
+                                <div class="join-step-number">1</div>
+                                <h4 class="text-lg font-semibold text-blue-800">Open Minecraft</h4>
+                                <p class="text-blue-600 mt-1">Launch Minecraft Bedrock Edition on your device (mobile, console, or Windows 10/11)</p>
+                            </div>
+                            
+                            <div class="join-step">
+                                <div class="join-step-number">2</div>
+                                <h4 class="text-lg font-semibold text-blue-800">Go to Servers</h4>
+                                <p class="text-blue-600 mt-1">Click "Play" then go to the "Servers" tab</p>
+                            </div>
+                            
+                            <div class="join-step">
+                                <div class="join-step-number">3</div>
+                                <h4 class="text-lg font-semibold text-blue-800">Add Server</h4>
+                                <p class="text-blue-600 mt-1">Scroll down and click "Add Server" then enter these details:</p>
+                                <div class="mt-2 bg-green-50 p-4 rounded-lg">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="font-medium text-green-800">Server Name:</span>
+                                        <span class="font-mono text-green-600">Nexalyze</span>
+                                    </div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="font-medium text-green-800">Server Address:</span>
+                                        <span class="font-mono text-green-600">mc.nexalyze.dk</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-medium text-green-800">Port:</span>
+                                        <span class="font-mono text-green-600">19132</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="join-step">
+                                <div class="join-step-number">4</div>
+                                <h4 class="text-lg font-semibold text-blue-800">Join Server</h4>
+                                <p class="text-blue-600 mt-1">Select the server from your list and click "Play"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-blue-100 border-l-4 border-blue-500 p-4 rounded-lg">
+                <div class="flex">
+                    <div class="flex-shrink-0 text-blue-500">
+                        <i class="fas fa-info-circle text-xl"></i>
+                    </div>
+                    <div class="ml-3">
+                        <h3 class="text-sm font-medium text-blue-800">Crossplay Information</h3>
+                        <div class="mt-2 text-sm text-blue-700">
+                            <p>Our server uses GeyserMC to allow Java and Bedrock players to play together. Some features may work slightly differently between editions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gamemodes Section -->
+    <section id="gamemodes" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">Our Gamemodes</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Lifesteal -->
+                <div class="gamemode-card bg-white rounded-xl overflow-hidden shadow-lg transition">
+                    <div class="h-48 bg-red-600 flex items-center justify-center">
+                        <i class="fas fa-heartbeat text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-2">Lifesteal</h3>
+                        <p class="text-blue-600 mb-4">
+                            Steal hearts from your enemies in this intense PvP experience where every kill makes you stronger.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">PvP</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Hardcore</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Unique</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Vanilla Survival -->
+                <div class="gamemode-card bg-white rounded-xl overflow-hidden shadow-lg transition">
+                    <div class="h-48 bg-green-600 flex items-center justify-center">
+                        <i class="fas fa-tree text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-2">Vanilla Survival</h3>
+                        <p class="text-blue-600 mb-4">
+                            Classic Minecraft survival with quality-of-life improvements and community features.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Classic</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Survival</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Community</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Building -->
+                <div class="gamemode-card bg-white rounded-xl overflow-hidden shadow-lg transition">
+                    <div class="h-48 bg-yellow-600 flex items-center justify-center">
+                        <i class="fas fa-hammer text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-2">Building</h3>
+                        <p class="text-blue-600 mb-4">
+                            Unleash your creativity in our building world with unlimited resources and no limits.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Creative</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">WorldEdit</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Showcase</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skyblock -->
+                <div class="gamemode-card bg-white rounded-xl overflow-hidden shadow-lg transition">
+                    <div class="h-48 bg-blue-600 flex items-center justify-center">
+                        <i class="fas fa-cloud text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-2">Skyblock</h3>
+                        <p class="text-blue-600 mb-4">
+                            Start with a single island and expand your empire! Our custom Skyblock has unique challenges.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Challenges</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Progression</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Survival</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Oneblock -->
+                <div class="gamemode-card bg-white rounded-xl overflow-hidden shadow-lg transition">
+                    <div class="h-48 bg-purple-600 flex items-center justify-center">
+                        <i class="fas fa-cube text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-2">Oneblock</h3>
+                        <p class="text-blue-600 mb-4">
+                            Start with a single block that regenerates as you break it. How far can you progress?
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Unique</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Progression</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Challenging</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PvP -->
+                <div class="gamemode-card bg-white rounded-xl overflow-hidden shadow-lg transition">
+                    <div class="h-48 bg-orange-600 flex items-center justify-center">
+                        <i class="fas fa-fist-raised text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-2">PvP</h3>
+                        <p class="text-blue-600 mb-4">
+                            Test your combat skills against other players in our dedicated PvP arenas and battlegrounds.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Arenas</span>
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Kits</span>
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Competitive</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Adventure -->
+                <div class="gamemode-card bg-white rounded-xl overflow-hidden shadow-lg transition col-span-1 md:col-span-2 lg:col-span-3">
+                    <div class="h-48 bg-emerald-600 flex items-center justify-center">
+                        <i class="fas fa-map-marked-alt text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-2">Adventure</h3>
+                        <p class="text-blue-600 mb-4">
+                            Explore our custom adventure map with dungeons and unique rewards.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm">Exploration</span>
+                            <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm">Custom</span>
+                            <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm">Challenges</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-cube mr-2"></i> Nexalyze
+                    </h3>
+                    <p class="text-blue-200">
+                        The best Minecraft server with unique gamemodes and an amazing community.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-blue-200 hover:text-white transition">Home</a></li>
+                        <li><a href="#features" class="text-blue-200 hover:text-white transition">Features</a></li>
+                        <li><a href="#gamemodes" class="text-blue-200 hover:text-white transition">Gamemodes</a></li>
+                        <li><a href="#join" class="text-blue-200 hover:text-white transition">How to Join</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Connect</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://discord.gg/68xY58WdtU" class="text-blue-200 hover:text-white text-2xl transition">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" class="text-blue-200 hover:text-white text-2xl transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-blue-200 hover:text-white text-2xl transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-blue-200">Java IP: <span class="font-mono">mc.nexalyze.dk</span></p>
+                        <p class="text-blue-200">Bedrock IP: <span class="font-mono">mc.nexalyze.dk</span> Port: <span class="font-mono">19132</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 mt-8 pt-8 text-center text-blue-300">
+                <p>&copy; 2023 Nexalyze Minecraft Server. All rights reserved.</p>
+                <p class="mt-2 text-sm">Not affiliated with Mojang or Microsoft.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Copy IP to clipboard
+        function copyToClipboard() {
+            const ip = 'mc.nexalyze.dk';
+            navigator.clipboard.writeText(ip).then(() => {
+                alert('Server IP copied to clipboard!');
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
