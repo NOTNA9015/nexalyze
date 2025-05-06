@@ -89,6 +89,14 @@
             justify-content: center;
             font-weight: bold;
         }
+        
+        .copy-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .copy-success {
+            color: #10b981 !important;
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -136,8 +144,8 @@
                     <h3 class="text-white text-xl font-semibold mb-4">Connect to our server</h3>
                     <div class="bg-white rounded-lg p-4 flex justify-between items-center">
                         <code class="text-blue-600 font-mono text-lg">mc.nexalyze.dk</code>
-                        <button onclick="copyToClipboard()" class="bg-blue-100 hover:bg-blue-200 text-blue-600 p-2 rounded-lg transition">
-                            <i class="fas fa-copy"></i>
+                        <button id="copyBtn" class="copy-btn bg-blue-100 hover:bg-blue-200 text-blue-600 p-2 rounded-lg transition">
+                            <i id="copyIcon" class="fas fa-copy"></i>
                         </button>
                     </div>
                     <p class="text-blue-100 mt-2 text-sm">Java & Bedrock Crossplay Supported</p>
@@ -429,7 +437,7 @@
                             <div class="join-step">
                                 <div class="join-step-number">4</div>
                                 <h4 class="text-lg font-semibold text-blue-800">Join Server</h4>
-                                <p class="text-blue-600 mt-1">Select the server from your list and click "Play"</p>
+                <p class="text-blue-600 mt-1">Select the server from your list and click "Play"</p>
                             </div>
                         </div>
                     </div>
@@ -500,13 +508,27 @@
     </footer>
 
     <script>
-        // Copy IP to clipboard
-        function copyToClipboard() {
+        // Copy IP to clipboard with visual feedback
+        document.getElementById('copyBtn').addEventListener('click', function() {
             const ip = 'mc.nexalyze.dk';
+            const copyIcon = document.getElementById('copyIcon');
+            const copyBtn = document.getElementById('copyBtn');
+            
+            // Change icon to checkmark and style
+            copyIcon.classList.remove('fa-copy');
+            copyIcon.classList.add('fa-check');
+            copyBtn.classList.add('copy-success');
+            
+            // Copy to clipboard
             navigator.clipboard.writeText(ip).then(() => {
-                alert('Server IP copied to clipboard!');
+                // Reset after 3 seconds (changed from 10 to 3 for better UX)
+                setTimeout(() => {
+                    copyIcon.classList.remove('fa-check');
+                    copyIcon.classList.add('fa-copy');
+                    copyBtn.classList.remove('copy-success');
+                }, 3000);
             });
-        }
+        });
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
