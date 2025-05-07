@@ -13,10 +13,20 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f0f9ff;
+            transition: background-color 0.3s ease;
+        }
+        
+        body.dark {
+            background-color: #0f172a;
+            color: #e2e8f0;
         }
         
         .gradient-bg {
             background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+        }
+        
+        .dark .gradient-bg {
+            background: linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0369a1 100%);
         }
         
         .logo-text {
@@ -33,9 +43,18 @@
             border: 1px solid rgba(255,255,255,0.3);
         }
         
+        .dark .server-ip-box {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+        
         .feature-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(2, 132, 199, 0.2);
+        }
+        
+        .dark .feature-card {
+            background-color: #1e293b;
         }
         
         .minecraft-btn {
@@ -71,6 +90,11 @@
             transform: translateY(-5px);
         }
         
+        .dark .gamemode-card {
+            background-color: #1e293b;
+            color: #e2e8f0;
+        }
+        
         .join-step {
             position: relative;
             padding-left: 3rem;
@@ -103,6 +127,58 @@
             height: 50px;
             object-fit: contain;
         }
+        
+        /* Dark mode text colors */
+        .dark .text-blue-800 {
+            color: #e2e8f0;
+        }
+        
+        .dark .text-blue-600 {
+            color: #cbd5e1;
+        }
+        
+        .dark .text-blue-200 {
+            color: #94a3b8;
+        }
+        
+        .dark .bg-white {
+            background-color: #1e293b;
+        }
+        
+        .dark .bg-blue-50 {
+            background-color: #00348988;
+        }
+        
+        .dark .bg-blue-100 {
+            background-color: #334155;
+        }
+
+        /* Dark mode for Bedrock server details */
+        .dark .bg-green-50 {
+            background-color: #1e3a3b;
+        }
+        
+        .dark .text-green-800 {
+            color: #e2e8f0;
+        }
+        
+        .dark .text-green-600 {
+            color: #cbd5e1;
+        }
+        
+        /* Dark mode toggle styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #38bdf8;
+        }
+        
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #38bdf8;
+        }
+        
+        .toggle-label {
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -112,11 +188,25 @@
             <div class="flex items-center space-x-2">
                 <img src="https://github.com/NOTNA9015/nexalyze/blob/main/minecraft_title.png?raw=true" alt="Nexalyze Logo" class="logo-img">
             </div>
-            <div class="hidden md:flex space-x-8">
+            <div class="hidden md:flex space-x-8 items-center">
                 <a href="#home" class="text-white hover:text-blue-100 font-medium transition">Home</a>
                 <a href="#features" class="text-white hover:text-blue-100 font-medium transition">Features</a>
                 <a href="#gamemodes" class="text-white hover:text-blue-100 font-medium transition">Gamemodes</a>
                 <a href="#join" class="text-white hover:text-blue-100 font-medium transition">How to Join</a>
+                
+                <!-- Dark Mode Toggle -->
+                <div class="flex items-center ml-4">
+                    <span class="mr-2 text-white">
+                        <i class="fas fa-sun"></i>
+                    </span>
+                    <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                        <input type="checkbox" id="darkModeToggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                        <label for="darkModeToggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                    <span class="text-white">
+                        <i class="fas fa-moon"></i>
+                    </span>
+                </div>
             </div>
             <button class="md:hidden text-white">
                 <i class="fas fa-bars text-2xl"></i>
@@ -429,12 +519,12 @@
                                         <span class="font-mono text-green-600">Nexalyze</span>
                                     </div>
                                     <div class="flex justify-between items-center mb-2">
-                                        <span class="font-medium text-green-800">Server Address:</span>
-                                        <span class="font-mono text-green-600">mc.nexalyze.dk</span>
+                                        <span class="font-medium text-green-800 dark">Server Address:</span>
+                                        <span class="font-mono text-green-600 dark">mc.nexalyze.dk</span>
                                     </div>
                                     <div class="flex justify-between items-center">
-                                        <span class="font-medium text-green-800">Port:</span>
-                                        <span class="font-mono text-green-600">19132</span>
+                                        <span class="font-medium text-green-800 dark">Port:</span>
+                                        <span class="font-mono text-green-600 dark">19132</span>
                                     </div>
                                 </div>
                             </div>
@@ -442,7 +532,7 @@
                             <div class="join-step">
                                 <div class="join-step-number">4</div>
                                 <h4 class="text-lg font-semibold text-blue-800">Join Server</h4>
-                <p class="text-blue-600 mt-1">Select the server from your list and click "Play"</p>
+                                <p class="text-blue-600 mt-1">Select the server from your list and click "Play"</p>
                             </div>
                         </div>
                     </div>
@@ -451,7 +541,7 @@
             
             <div class="mt-12 bg-blue-100 border-l-4 border-blue-500 p-4 rounded-lg">
                 <div class="flex">
-                    <div class="flex-shrink-0 text-blue-500">
+                    <div class="flex-shrink-0 text-blue-500 dark:text-blue-400">
                         <i class="fas fa-info-circle text-xl"></i>
                     </div>
                     <div class="ml-3">
@@ -543,6 +633,43 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Dark mode toggle functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        // Check for saved user preference or system preference
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+            body.classList.add('dark');
+            darkModeToggle.checked = true;
+        }
+
+        // Toggle dark mode
+        darkModeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                body.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Listen for system preference changes
+        prefersDarkScheme.addEventListener('change', e => {
+            if (e.matches) {
+                body.classList.add('dark');
+                darkModeToggle.checked = true;
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark');
+                darkModeToggle.checked = false;
+                localStorage.setItem('theme', 'light');
+            }
         });
     </script>
 </body>
