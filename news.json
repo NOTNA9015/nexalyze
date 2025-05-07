@@ -5,7 +5,6 @@
     "date": "2025-04-15",
     "category": "event",
     "imageUrl": "https://example.com/images/spring-festival.jpg",
-    "readMoreUrl": "https://nexalyze.dk/news/spring-festival"
   },
   {
     "title": "Placeholder",
@@ -13,7 +12,6 @@
     "date": "2025-04-18",
     "category": "maintenance",
     "imageUrl": "https://example.com/images/maintenance.jpg",
-    "readMoreUrl": "https://nexalyze.dk/news/maintenance-april"
   },
   {
     "title": "Placeholder",
@@ -21,7 +19,6 @@
     "date": "2025-04-22",
     "category": "update",
     "imageUrl": "https://example.com/images/survival-update.jpg",
-    "readMoreUrl": "https://nexalyze.dk/news/survival-update"
   },
   {
     "title": "Placeholder",
@@ -29,6 +26,5 @@
     "date": "2025-04-10",
     "category": "announcement",
     "imageUrl": "https://example.com/images/guidelines.jpg",
-    "readMoreUrl": "https://nexalyze.dk/news/community-guidelines"
   }
 ]
