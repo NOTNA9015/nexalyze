@@ -1,30 +1,9 @@
 [
   {
-    "category": "Update",
-    "title": "New Minigame Released!",
-    "date": "2025-05-07",
-    "description": "We've just released a new minigame called 'Battle Arena'! Join now to test your skills against other players. Don't miss out on the action!",
-    "imageUrl": "https://example.com/images/battle-arena.jpg"
-  },
-  {
-    "category": "Event",
-    "title": "Double XP Weekend",
-    "date": "2025-05-01",
-    "description": "This weekend, enjoy double XP on all activities! Level up faster and get rewards for participating.",
-    "imageUrl": "https://example.com/images/double-xp-weekend.jpg"
-  },
-  {
-    "category": "Maintenance",
-    "title": "Server Downtime Scheduled",
-    "date": "2025-04-25",
-    "description": "Scheduled maintenance will occur on April 30th, 2025, from 2:00 AM to 4:00 AM. Please plan accordingly.",
-    "imageUrl": "https://example.com/images/server-maintenance.jpg"
-  },
-  {
     "category": "Announcement",
-    "title": "Season 3 Starts Now!",
-    "date": "2025-04-15",
-    "description": "Season 3 of Nexalyze Minecraft has officially begun! Get ready for new challenges, new maps, and exciting rewards.",
-    "imageUrl": "https://example.com/images/season-3.jpg"
+    "title": "Website now live",
+    "date": "2025-05-07",
+    "description": "The website is now online along with this news page",
+    "imageUrl": "https://github.com/NOTNA9015/nexalyze/blob/main/minecraft_title2.png?raw=true"
   }
 ]
