@@ -1,1 +1,18 @@
-
+[
+  {
+    "category": "Rank",
+    "title": "Test Rank (DO NOT buy)",
+    "description": "Test",
+    "imageUrl": "https://github.com/NOTNA9015/nexalyze/blob/main/2025-05-08_19.36.55.png?raw=true"
+    "buyUrl": "https://example.com"
+    "price": "1"
+  },
+  {
+    "category": "Kit",
+    "title": "Test Kit (DO NOT buy)",
+    "description": "Test",
+    "imageUrl": "https://github.com/NOTNA9015/nexalyze/blob/main/2025-05-08_19.36.55.png?raw=true"
+    "buyUrl": "https://example.com"
+    "price": "1"
+  }
+]
