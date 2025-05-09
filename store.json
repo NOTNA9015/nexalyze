@@ -1,11 +1,11 @@
 [
   {
-    "name": "Test Rank",
+    "name": "VIP",
     "price": 9.99,
     "originalPrice": 14.99,
-    "description": "Do not buy",
+    "description": "Nothing here yet",
     "category": "Rank",
-    "imageUrl": "https://github.com/NOTNA9015/nexalyze/blob/main/2025-05-08_20.05.42.png?raw=true",
+    "imageUrl": "https://t4.ftcdn.net/jpg/01/18/12/17/360_F_118121764_kh57P8Q2B8zoav4KlW3l6YomtNrlMHTw.jpg",
     "sale": true
   }
 ]
