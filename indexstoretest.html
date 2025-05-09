@@ -533,8 +533,8 @@
         // Fetch store data from JSON
         async function fetchStoreItems() {
             try {
-                // Try to fetch from the correct JSON file location
-                const response = await fetch('https://raw.githubusercontent.com/NOTNA9015/nexalyze/main/store.json', {
+                // Fetch from the specified JSON URL
+                const response = await fetch('https://github.com/NOTNA9015/nexalyze/raw/refs/heads/main/store.json', {
                     cache: 'no-cache' // Prevent caching issues
                 });
                 
@@ -649,7 +649,7 @@
             
             // Change icon from bars to times when open
             const icon = mobileMenuButton.querySelector('i');
-            if (mobileMenu.classList.contains('open')) {
+            if (mobileMenu.classList.contains('open') {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
             } else {
