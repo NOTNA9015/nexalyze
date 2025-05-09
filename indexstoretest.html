@@ -484,7 +484,7 @@
                 "title": "VIP Rank",
                 "description": "Get access to VIP-only features, commands, and perks on the server.",
                 "price": "9.99",
-                "category": "Rank",
+                "category": "rank",
                 "imageUrl": "https://github.com/NOTNA9015/nexalyze/blob/main/2025-05-08_19.36.55.png?raw=true",
                 "buyUrl": "#"
             },
@@ -492,7 +492,7 @@
                 "title": "MVP Rank",
                 "description": "Upgrade to MVP for even more perks, including exclusive cosmetics and commands.",
                 "price": "19.99",
-                "category": "Rank",
+                "category": "rank",
                 "imageUrl": "https://github.com/NOTNA9015/nexalyze/blob/main/2025-05-08_19.36.55.png?raw=true",
                 "buyUrl": "#"
             },
@@ -500,7 +500,7 @@
                 "title": "Starter Kit",
                 "description": "Get a head start with this essential kit containing tools, armor, and resources.",
                 "price": "4.99",
-                "category": "Kit",
+                "category": "kit",
                 "imageUrl": "https://github.com/NOTNA9015/nexalyze/blob/main/2025-05-08_19.36.55.png?raw=true",
                 "buyUrl": "#"
             },
@@ -508,7 +508,7 @@
                 "title": "Legendary Sword",
                 "description": "A powerful enchanted sword that gives you an edge in combat.",
                 "price": "7.99",
-                "category": "Item",
+                "category": "item",
                 "imageUrl": "https://github.com/NOTNA9015/nexalyze/blob/main/2025-05-08_19.36.55.png?raw=true",
                 "buyUrl": "#"
             },
@@ -516,7 +516,7 @@
                 "title": "Pet Dragon",
                 "description": "Show off your status with this exclusive cosmetic pet dragon.",
                 "price": "14.99",
-                "category": "Other",
+                "category": "other",
                 "imageUrl": "https://github.com/NOTNA9015/nexalyze/blob/main/2025-05-08_19.36.55.png?raw=true",
                 "buyUrl": "#"
             },
@@ -524,7 +524,7 @@
                 "title": "Elite Kit",
                 "description": "The ultimate kit with high-tier gear and exclusive items.",
                 "price": "12.99",
-                "category": "Kit",
+                "category": "kit",
                 "imageUrl": "https://github.com/NOTNA9015/nexalyze/blob/main/2025-05-08_19.36.55.png?raw=true",
                 "buyUrl": "#"
             }
@@ -534,7 +534,9 @@
         async function fetchStoreItems() {
             try {
                 // Try to fetch from the correct JSON file location
-                const response = await fetch('https://raw.githubusercontent.com/NOTNA9015/nexalyze/main/store.json');
+                const response = await fetch('https://raw.githubusercontent.com/NOTNA9015/nexalyze/main/store.json', {
+                    cache: 'no-cache' // Prevent caching issues
+                });
                 
                 if (!response.ok) {
                     throw new Error('Failed to fetch store data');
@@ -554,7 +556,7 @@
                 
                 // Show error message to user
                 document.getElementById('errorMessage').textContent = 
-                    'Failed to load store items. Showing sample data instead.';
+                    'Failed to load store items from server. Showing sample data instead.';
                 document.getElementById('errorState').classList.remove('hidden');
                 
                 // Use sample data as fallback
@@ -609,7 +611,7 @@
                         </div>
                         <div class="p-6">
                             <div class="flex justify-between items-center mb-4">
-                                <span class="${tagClass} text-xs font-semibold px-3 py-1 rounded-full">${storeItem.category}</span>
+                                <span class="${tagClass} text-xs font-semibold px-3 py-1 rounded-full">${storeItem.category.charAt(0).toUpperCase() + storeItem.category.slice(1)}</span>
                             </div>
                             <h3 class="text-xl font-bold store-item-title mb-3">${storeItem.title}</h3>
                             <p class="store-item-desc mb-4">
