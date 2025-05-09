@@ -164,6 +164,49 @@
         }
 
         /* Store card styles */
+        .store-price {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .store-price::before {
+            content: '$';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #0284c7;
+            font-weight: bold;
+        }
+        
+        .dark .store-price::before {
+            color: #38bdf8;
+        }
+        
+        /* Store category colors */
+        .rank-tag {
+            background-color: #3b82f6;
+            color: white;
+        }
+        
+        .cosmetic-tag {
+            background-color: #10b981;
+            color: white;
+        }
+        
+        .currency-tag {
+            background-color: #f59e0b;
+            color: white;
+        }
+        
+        .bundle-tag {
+            background-color: #8b5cf6;
+            color: white;
+        }
+        
+        /* Store card image container */
         .store-image-container {
             height: 200px;
             overflow: hidden;
@@ -180,45 +223,7 @@
             transform: scale(1.05);
         }
 
-        /* Store category colors */
-        .rank-tag {
-            background-color: #3b82f6;
-            color: white;
-        }
-        
-        .kit-tag {
-            background-color: #10b981;
-            color: white;
-        }
-        
-        .item-tag {
-            background-color: #f59e0b;
-            color: white;
-        }
-        
-        .other-tag {
-            background-color: #8b5cf6;
-            color: white;
-        }
-
-        /* Price badge */
-        .price-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-weight: bold;
-        }
-
-        .dark .price-badge {
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #1e293b;
-        }
-
-        /* Store section */
+        /* Updated light mode colors for Store section */
         .store-section {
             background-color: #f8fafc;
         }
@@ -232,12 +237,16 @@
             border: 1px solid #e2e8f0;
         }
 
-        .store-item-title {
+        .store-item-title-light {
             color: #1e293b;
         }
 
-        .store-item-desc {
+        .store-desc-light {
             color: #475569;
+        }
+
+        .store-price-light {
+            color: #64748b;
         }
 
         .dark .store-section {
@@ -253,46 +262,30 @@
             border-color: #334155;
         }
 
-        .dark .store-item-title {
+        .dark .store-item-title-light {
             color: #e2e8f0;
         }
 
-        .dark .store-item-desc {
+        .dark .store-desc-light {
             color: #94a3b8;
         }
 
-        /* Loading state */
-        .loading-spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-radius: 50%;
-            border-top: 4px solid #3b82f6;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
+        .dark .store-price-light {
+            color: #94a3b8;
         }
 
-        .dark .loading-spinner {
-            border-top-color: #60a5fa;
+        /* Buy button styles */
+        .buy-btn {
+            transition: all 0.2s ease;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .buy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .error-message {
-            background-color: #fee2e2;
-            color: #b91c1c;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .dark .error-message {
-            background-color: #7f1d1d;
-            color: #fecaca;
+        .dark .buy-btn:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -310,6 +303,7 @@
                     <a href="https://nexalyze.dk/store" class="text-white hover:text-blue-100 font-medium transition">Store</a>
                     <a href="https://nexalyze.dk#features" class="text-white hover:text-blue-100 font-medium transition">Features</a>
                     <a href="https://nexalyze.dk#gamemodes" class="text-white hover:text-blue-100 font-medium transition">Gamemodes</a>
+                    <a href="https://nexalyze.dk#join" class="text-white hover:text-blue-100 font-medium transition">How to Join</a>
                     
                     <!-- Dark Mode Toggle -->
                     <div class="flex items-center ml-4">
@@ -338,6 +332,7 @@
                     <a href="https://nexalyze.dk/store" class="block px-3 py-2 text-white hover:text-blue-100 font-medium transition">Store</a>
                     <a href="https://nexalyze.dk#features" class="block px-3 py-2 text-white hover:text-blue-100 font-medium transition">Features</a>
                     <a href="https://nexalyze.dk#gamemodes" class="block px-3 py-2 text-white hover:text-blue-100 font-medium transition">Gamemodes</a>
+                    <a href="https://nexalyze.dk#join" class="block px-3 py-2 text-white hover:text-blue-100 font-medium transition">How to Join</a>
                     
                     <!-- Dark Mode Toggle for Mobile -->
                     <div class="flex items-center px-3 py-2">
@@ -364,7 +359,7 @@
                 <span class="logo-text">Nexalyze</span> Store
             </h1>
             <p class="text-xl text-blue-50 mb-8 max-w-3xl mx-auto">
-                Purchase ranks, kits, and other items to enhance your gameplay experience on our server.
+                Purchase ranks, cosmetics, and other premium items to enhance your gameplay experience.
             </p>
             <div class="flex justify-center">
                 <div class="server-ip-box p-6 rounded-xl shadow-xl max-w-md w-full text-center">
@@ -385,7 +380,7 @@
     <section class="py-16 store-section">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold store-title mb-4">Server Store</h2>
+                <h2 class="text-3xl md:text-4xl font-bold store-title mb-4">Store Items</h2>
                 <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
             </div>
             
@@ -397,33 +392,19 @@
                 <button class="minecraft-btn bg-blue-100 hover:bg-blue-200 text-blue-600 dark:text-white font-bold py-2 px-4 rounded-lg transition duration-300 shadow-md" data-filter="rank">
                     Ranks
                 </button>
-                <button class="minecraft-btn bg-green-100 hover:bg-green-200 text-green-600 dark:text-white font-bold py-2 px-4 rounded-lg transition duration-300 shadow-md" data-filter="kit">
-                    Kits
+                <button class="minecraft-btn bg-green-100 hover:bg-green-200 text-green-600 dark:text-white font-bold py-2 px-4 rounded-lg transition duration-300 shadow-md" data-filter="cosmetic">
+                    Cosmetics
                 </button>
-                <button class="minecraft-btn bg-yellow-100 hover:bg-yellow-200 text-yellow-600 dark:text-white font-bold py-2 px-4 rounded-lg transition duration-300 shadow-md" data-filter="item">
-                    Items
+                <button class="minecraft-btn bg-yellow-100 hover:bg-yellow-200 text-yellow-600 dark:text-white font-bold py-2 px-4 rounded-lg transition duration-300 shadow-md" data-filter="currency">
+                    Currency
                 </button>
-                <button class="minecraft-btn bg-purple-100 hover:bg-purple-200 text-purple-600 dark:text-white font-bold py-2 px-4 rounded-lg transition duration-300 shadow-md" data-filter="other">
-                    Other
+                <button class="minecraft-btn bg-purple-100 hover:bg-purple-200 text-purple-600 dark:text-white font-bold py-2 px-4 rounded-lg transition duration-300 shadow-md" data-filter="bundle">
+                    Bundles
                 </button>
             </div>
             
             <!-- Store Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="storeContainer">
-                <!-- Loading state -->
-                <div id="loadingState" class="col-span-full flex flex-col items-center justify-center py-12">
-                    <div class="loading-spinner mb-4"></div>
-                    <p class="text-lg">Loading store items...</p>
-                </div>
-                
-                <!-- Error state (hidden by default) -->
-                <div id="errorState" class="col-span-full hidden">
-                    <div class="error-message">
-                        <i class="fas fa-exclamation-triangle mr-2"></i>
-                        <span id="errorMessage">Failed to load store items. Please try again later.</span>
-                    </div>
-                </div>
-                
                 <!-- Store items will be dynamically inserted here -->
             </div>
         </div>
@@ -449,6 +430,7 @@
                         <li><a href="store.html" class="text-blue-200 hover:text-white transition">Store</a></li>
                         <li><a href="index.html#features" class="text-blue-200 hover:text-white transition">Features</a></li>
                         <li><a href="index.html#gamemodes" class="text-blue-200 hover:text-white transition">Gamemodes</a></li>
+                        <li><a href="index.html#join" class="text-blue-200 hover:text-white transition">How to Join</a></li>
                     </ul>
                 </div>
                 <div>
@@ -478,163 +460,85 @@
     </footer>
 
     <script>
-        // Sample store data (fallback if JSON fetch fails)
-        const sampleStoreData = [
-            {
-                "title": "VIP Rank",
-                "description": "Get access to VIP-only features, commands, and perks on the server.",
-                "price": "9.99",
-                "category": "Rank",
-                "imageUrl": "https://github.com/NOTNA9015/nexalyze/blob/main/2025-05-08_19.36.55.png?raw=true",
-                "buyUrl": "#"
-            },
-            {
-                "title": "MVP Rank",
-                "description": "Upgrade to MVP for even more perks, including exclusive cosmetics and commands.",
-                "price": "19.99",
-                "category": "Rank",
-                "imageUrl": "https://github.com/NOTNA9015/nexalyze/blob/main/2025-05-08_19.36.55.png?raw=true",
-                "buyUrl": "#"
-            },
-            {
-                "title": "Starter Kit",
-                "description": "Get a head start with this essential kit containing tools, armor, and resources.",
-                "price": "4.99",
-                "category": "Kit",
-                "imageUrl": "https://github.com/NOTNA9015/nexalyze/blob/main/2025-05-08_19.36.55.png?raw=true",
-                "buyUrl": "#"
-            },
-            {
-                "title": "Legendary Sword",
-                "description": "A powerful enchanted sword that gives you an edge in combat.",
-                "price": "7.99",
-                "category": "Item",
-                "imageUrl": "https://github.com/NOTNA9015/nexalyze/blob/main/2025-05-08_19.36.55.png?raw=true",
-                "buyUrl": "#"
-            },
-            {
-                "title": "Pet Dragon",
-                "description": "Show off your status with this exclusive cosmetic pet dragon.",
-                "price": "14.99",
-                "category": "Other",
-                "imageUrl": "https://github.com/NOTNA9015/nexalyze/blob/main/2025-05-08_19.36.55.png?raw=true",
-                "buyUrl": "#"
-            },
-            {
-                "title": "Elite Kit",
-                "description": "The ultimate kit with high-tier gear and exclusive items.",
-                "price": "12.99",
-                "category": "Kit",
-                "imageUrl": "https://github.com/NOTNA9015/nexalyze/blob/main/2025-05-08_19.36.55.png?raw=true",
-                "buyUrl": "#"
-            }
-        ];
-
         // Fetch store data from JSON
         async function fetchStoreItems() {
             try {
-                // Try to fetch from the correct JSON file location
-                const response = await fetch('https://raw.githubusercontent.com/NOTNA9015/nexalyze/main/store.json');
-                
-                if (!response.ok) {
-                    throw new Error('Failed to fetch store data');
-                }
-                
+                const response = await fetch('https://github.com/NOTNA9015/nexalyze/raw/refs/heads/main/store.json');
                 const storeData = await response.json();
-                
-                // If the response is empty, use sample data
-                if (!storeData || storeData.length === 0) {
-                    console.warn('Empty store data received, using sample data');
-                    return sampleStoreData;
-                }
-                
                 return storeData;
             } catch (error) {
                 console.error('Error fetching store items:', error);
-                
-                // Show error message to user
-                document.getElementById('errorMessage').textContent = 
-                    'Failed to load store items. Showing sample data instead.';
-                document.getElementById('errorState').classList.remove('hidden');
-                
-                // Use sample data as fallback
-                return sampleStoreData;
+                return [];
             }
         }
 
         // Render store items
         async function renderStoreItems() {
             const storeContainer = document.getElementById('storeContainer');
-            const loadingState = document.getElementById('loadingState');
+            const storeData = await fetchStoreItems();
             
-            try {
-                const storeData = await fetchStoreItems();
+            // Clear existing content
+            storeContainer.innerHTML = '';
+            
+            // Create store cards for each item
+            storeData.forEach(storeItem => {
+                const storeCard = document.createElement('div');
+                storeCard.className = 'store-card-light store-card rounded-xl overflow-hidden shadow-lg transition duration-300';
+                storeCard.setAttribute('data-category', storeItem.category.toLowerCase());
                 
-                // Hide loading state
-                loadingState.style.display = 'none';
+                // Determine tag class based on category
+                let tagClass = '';
+                switch(storeItem.category.toLowerCase()) {
+                    case 'rank':
+                        tagClass = 'rank-tag';
+                        break;
+                    case 'cosmetic':
+                        tagClass = 'cosmetic-tag';
+                        break;
+                    case 'currency':
+                        tagClass = 'currency-tag';
+                        break;
+                    case 'bundle':
+                        tagClass = 'bundle-tag';
+                        break;
+                    default:
+                        tagClass = 'bg-gray-200 text-gray-800';
+                }
                 
-                // Clear existing content (except loading/error states)
-                const itemsToRemove = Array.from(storeContainer.children).filter(
-                    child => child.id !== 'loadingState' && child.id !== 'errorState'
-                );
-                itemsToRemove.forEach(child => child.remove());
-                
-                // Create store cards for each item
-                storeData.forEach(storeItem => {
-                    const storeCard = document.createElement('div');
-                    storeCard.className = 'store-card-light store-card rounded-xl overflow-hidden shadow-lg transition duration-300 relative';
-                    storeCard.setAttribute('data-category', storeItem.category.toLowerCase());
-                    
-                    // Determine tag class based on category
-                    let tagClass = '';
-                    switch(storeItem.category.toLowerCase()) {
-                        case 'rank':
-                            tagClass = 'rank-tag';
-                            break;
-                        case 'kit':
-                            tagClass = 'kit-tag';
-                            break;
-                        case 'item':
-                            tagClass = 'item-tag';
-                            break;
-                        default:
-                            tagClass = 'other-tag';
-                    }
-                    
-                    // Create card HTML
-                    storeCard.innerHTML = 
-                        `<div class="store-image-container relative">
-                            <img src="${storeItem.imageUrl || 'https://github.com/NOTNA9015/nexalyze/blob/main/2025-05-08_19.36.55.png?raw=true'}" alt="${storeItem.title}" class="store-image">
-                            <div class="price-badge">$${storeItem.price || '0'}</div>
+                // Create card HTML
+                storeCard.innerHTML = `
+                    <div class="store-image-container">
+                        <img src="${storeItem.imageUrl || 'https://images.unsplash.com/photo-1627855437693-dcc7b0c4ba5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'}" alt="${storeItem.name}" class="store-image">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="${tagClass} text-xs font-semibold px-3 py-1 rounded-full">${storeItem.category}</span>
+                            <span class="store-price store-price-light text-lg font-bold">${storeItem.price.toFixed(2)}</span>
                         </div>
-                        <div class="p-6">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="${tagClass} text-xs font-semibold px-3 py-1 rounded-full">${storeItem.category}</span>
-                            </div>
-                            <h3 class="text-xl font-bold store-item-title mb-3">${storeItem.title}</h3>
-                            <p class="store-item-desc mb-4">
-                                ${storeItem.description}
-                            </p>
-                            <a href="${storeItem.buyUrl || '#'}" target="_blank" class="minecraft-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 shadow-md w-full text-center block">
-                                Purchase Now
-                            </a>
-                        </div>`;
-                    
-                    storeContainer.appendChild(storeCard);
-                });
+                        <h3 class="text-xl font-bold store-item-title-light mb-3">${storeItem.name}</h3>
+                        <p class="store-desc-light mb-4">
+                            ${storeItem.description}
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm ${storeItem.sale ? 'text-red-500 dark:text-red-400 line-through' : 'text-gray-500 dark:text-gray-400'}">
+                                ${storeItem.sale ? `$${storeItem.originalPrice.toFixed(2)}` : ''}
+                            </span>
+                            <button class="buy-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 shadow-md">
+                                Buy Now
+                            </button>
+                        </div>
+                        ${storeItem.sale ? 
+                            `<div class="mt-2 text-right">
+                                <span class="bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full">
+                                    SALE: ${((1 - storeItem.price/storeItem.originalPrice)*100).toFixed(0)}% OFF
+                                </span>
+                            </div>` : ''
+                        }
+                    </div>
+                `;
                 
-                // If we had an error before but now have data, hide the error
-                document.getElementById('errorState').classList.add('hidden');
-                
-                // Setup filters after items are loaded
-                setupStoreFilter();
-            } catch (error) {
-                console.error('Error rendering store items:', error);
-                loadingState.style.display = 'none';
-                document.getElementById('errorMessage').textContent = 
-                    'Failed to load store items. Please try again later.';
-                document.getElementById('errorState').classList.remove('hidden');
-            }
+                storeContainer.appendChild(storeCard);
+            });
         }
 
         // Mobile menu toggle functionality
@@ -686,11 +590,6 @@
                     copyIcon.classList.add('fa-copy');
                     copyBtn.classList.remove('copy-success');
                 }, 3000);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-                copyIcon.classList.remove('fa-check');
-                copyIcon.classList.add('fa-copy');
-                copyBtn.classList.remove('copy-success');
             });
         });
 
@@ -707,26 +606,10 @@
                     filterButtons.forEach(btn => {
                         if (btn === this) {
                             btn.classList.remove('bg-blue-100', 'hover:bg-blue-200', 'text-blue-600');
-                            btn.classList.remove('bg-green-100', 'hover:bg-green-200', 'text-green-600');
-                            btn.classList.remove('bg-yellow-100', 'hover:bg-yellow-200', 'text-yellow-600');
-                            btn.classList.remove('bg-purple-100', 'hover:bg-purple-200', 'text-purple-600');
                             btn.classList.add('bg-blue-600', 'hover:bg-blue-700', 'text-white');
                         } else {
                             btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'text-white');
-                            
-                            // Reset to appropriate color based on filter
-                            const btnFilter = btn.getAttribute('data-filter');
-                            if (btnFilter === 'rank') {
-                                btn.classList.add('bg-blue-100', 'hover:bg-blue-200', 'text-blue-600');
-                            } else if (btnFilter === 'kit') {
-                                btn.classList.add('bg-green-100', 'hover:bg-green-200', 'text-green-600');
-                            } else if (btnFilter === 'item') {
-                                btn.classList.add('bg-yellow-100', 'hover:bg-yellow-200', 'text-yellow-600');
-                            } else if (btnFilter === 'other') {
-                                btn.classList.add('bg-purple-100', 'hover:bg-purple-200', 'text-purple-600');
-                            } else {
-                                btn.classList.add('bg-blue-100', 'hover:bg-blue-200', 'text-blue-600');
-                            }
+                            btn.classList.add('bg-blue-100', 'hover:bg-blue-200', 'text-blue-600');
                         }
                     });
                     
@@ -801,6 +684,16 @@
         // Initialize the page
         document.addEventListener('DOMContentLoaded', async () => {
             await renderStoreItems();
+            setupStoreFilter();
+            
+            // Add click handlers for buy buttons
+            document.querySelectorAll('.buy-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const card = this.closest('.store-card');
+                    const itemName = card.querySelector('.store-item-title-light').textContent;
+                    alert(`You clicked to buy: ${itemName}`);
+                });
+            });
         });
     </script>
 </body>
