@@ -1,38 +1,11 @@
 [
   {
-    "name": "VIP Rank",
+    "name": "Test Rank",
     "price": 9.99,
     "originalPrice": 14.99,
-    "description": "Get access to VIP-exclusive features, kits, and cosmetics.",
+    "description": "Do not buy",
     "category": "Rank",
-    "imageUrl": "https://example.com/images/vip-rank.png",
-    "sale": true
-  },
-  {
-    "name": "Dragon Wings",
-    "price": 4.99,
-    "originalPrice": 4.99,
-    "description": "Cosmetic wings that flap as you walk!",
-    "category": "Cosmetic",
-    "imageUrl": "https://example.com/images/dragon-wings.png",
-    "sale": false
-  },
-  {
-    "name": "Coins Pack (5000)",
-    "price": 12.99,
-    "originalPrice": 19.99,
-    "description": "Get 5,000 in-game coins to spend on perks.",
-    "category": "Currency",
-    "imageUrl": "https://example.com/images/coins-pack.png",
-    "sale": true
-  },
-  {
-    "name": "Starter Bundle",
-    "price": 19.99,
-    "originalPrice": 29.99,
-    "description": "Bundle of beginner gear, coins, and a one-week VIP trial.",
-    "category": "Bundle",
-    "imageUrl": "https://example.com/images/starter-bundle.png",
+    "imageUrl": "",
     "sale": true
   }
 ]
