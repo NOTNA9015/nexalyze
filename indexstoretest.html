@@ -392,7 +392,7 @@
                 <button class="minecraft-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 shadow-md" data-filter="rank">
                     Ranks
                 </button>
-                <button class="minecraft-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 shadow-md" data-filter="cosmetic">
+                <button class="minecraft-btn bg-blue-600 hover:bg-blue-7text-white font-bold py-2 px-4 rounded-lg transition duration-300 shadow-md" data-filter="cosmetic">
                     Cosmetics
                 </button>
                 <button class="minecraft-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 shadow-md" data-filter="currency">
@@ -460,15 +460,84 @@
     </footer>
 
     <script>
+        // Sample store data (will be replaced by fetch from JSON)
+        const sampleStoreData = [
+            {
+                "name": "VIP Rank",
+                "category": "Rank",
+                "description": "Get access to VIP-only perks including special chat colors, commands, and more!",
+                "price": 9.99,
+                "originalPrice": 12.99,
+                "sale": true,
+                "imageUrl": "https://images.unsplash.com/photo-1627855437693-dcc7b0c4ba5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                "purchaseLink": "https://nexalyze.dk/store/checkout?item=VIP"
+            },
+            {
+                "name": "MVP Rank",
+                "category": "Rank",
+                "description": "Upgrade to MVP for even more perks including particle effects and additional commands!",
+                "price": 19.99,
+                "originalPrice": 24.99,
+                "sale": true,
+                "imageUrl": "https://images.unsplash.com/photo-1627855437693-dcc7b0c4ba5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                "purchaseLink": "https://nexalyze.dk/store/checkout?item=MVP"
+            },
+            {
+                "name": "Legend Rank",
+                "category": "Rank",
+                "description": "The ultimate rank with all perks including exclusive cosmetics and priority support!",
+                "price": 39.99,
+                "originalPrice": 49.99,
+                "sale": true,
+                "imageUrl": "https://images.unsplash.com/photo-1627855437693-dcc7b0c4ba5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                "purchaseLink": "https://nexalyze.dk/store/checkout?item=Legend"
+            },
+            {
+                "name": "Pet Dragon",
+                "category": "Cosmetic",
+                "description": "Show off with this awesome dragon pet that follows you around!",
+                "price": 7.99,
+                "originalPrice": 9.99,
+                "sale": true,
+                "imageUrl": "https://images.unsplash.com/photo-1627855437693-dcc7b0c4ba5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                "purchaseLink": "https://nexalyze.dk/store/checkout?item=DragonPet"
+            },
+            {
+                "name": "10,000 Coins",
+                "category": "Currency",
+                "description": "Get a boost with 10,000 in-game coins to spend on items and upgrades!",
+                "price": 4.99,
+                "originalPrice": 5.99,
+                "sale": true,
+                "imageUrl": "https://images.unsplash.com/photo-1627855437693-dcc7b0c4ba5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                "purchaseLink": "https://nexalyze.dk/store/checkout?item=10000Coins"
+            },
+            {
+                "name": "Starter Bundle",
+                "category": "Bundle",
+                "description": "Perfect for new players! Includes VIP rank, 5,000 coins, and a special cosmetic!",
+                "price": 14.99,
+                "originalPrice": 19.99,
+                "sale": true,
+                "imageUrl": "https://images.unsplash.com/photo-1627855437693-dcc7b0c4ba5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                "purchaseLink": "https://nexalyze.dk/store/checkout?item=StarterBundle"
+            }
+        ];
+
         // Fetch store data from JSON
         async function fetchStoreItems() {
             try {
                 const response = await fetch('https://raw.githubusercontent.com/NOTNA9015/nexalyze/refs/heads/main/store.json');
+                if (!response.ok) {
+                    console.warn('Failed to fetch store items from JSON, using sample data');
+                    return sampleStoreData;
+                }
                 const storeData = await response.json();
                 return storeData;
             } catch (error) {
                 console.error('Error fetching store items:', error);
-                return [];
+                console.warn('Using sample store data instead');
+                return sampleStoreData;
             }
         }
 
@@ -523,9 +592,9 @@
                             <span class="text-sm ${storeItem.sale ? 'text-red-500 dark:text-red-400 line-through' : 'text-gray-500 dark:text-gray-400'}">
                                 ${storeItem.sale ? `$${storeItem.originalPrice.toFixed(2)}` : ''}
                             </span>
-                            <button class="buy-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 shadow-md">
+                            <a href="${storeItem.purchaseLink || '#'}" target="_blank" class="buy-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 shadow-md">
                                 Buy Now
-                            </button>
+                            </a>
                         </div>
                         ${storeItem.sale ? 
                             `<div class="mt-2 text-right">
@@ -685,15 +754,6 @@
         document.addEventListener('DOMContentLoaded', async () => {
             await renderStoreItems();
             setupStoreFilter();
-            
-            // Add click handlers for buy buttons
-            document.querySelectorAll('.buy-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const card = this.closest('.store-card');
-                    const itemName = card.querySelector('.store-item-title-light').textContent;
-                    alert(`You clicked to buy: ${itemName}`);
-                });
-            });
         });
     </script>
 </body>
