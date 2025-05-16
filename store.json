@@ -1,12 +1,12 @@
 [
   {
-    "name": "VIP",
-    "price": 9.99,
-    "originalPrice": 14.99,
-    "description": "Nothing here yet",
+    "name": "Something went wrong!",
+    "price": 0,
+    "originalPrice": 0,
+    "description": "Please ping NOTNA901 in the discord server. Click Buy Now below to be taken there. ",
     "category": "Rank",
-    "imageUrl": "https://t4.ftcdn.net/jpg/01/18/12/17/360_F_118121764_kh57P8Q2B8zoav4KlW3l6YomtNrlMHTw.jpg",
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:1400/1*MXyMqcEJ6Se0SCWcYCKZTQ.jpeg",
     "sale": true
-    "purchaseLink": "https://nexalyze.dk/news"
+    "purchaseLink": "https://discord.gg/68xY58WdtU"
   }
 ]
